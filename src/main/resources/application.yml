@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    status-page-url-path: /info
+    health-check-url-path: /health
+
+zuul:
+  ignored-services: '*'
+  routes:
+    user-proxy: /user-api/**
+    product-composite: /inventory-api/**
