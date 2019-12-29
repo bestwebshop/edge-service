@@ -10,5 +10,14 @@ eureka:
 zuul:
   ignored-services: '*'
   routes:
-    user-proxy: /user-api/**
-    product-composite: /inventory-api/**
+    user-service:
+      path: /users/**
+      strip-prefix: false
+    inventory-service:
+      path: /inventory-api/**
+
+ribbon:
+  ReadTimeout: 60000
+  connection-timeout: 3000
+  eureka:
+    enabled: true
