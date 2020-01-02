@@ -11,8 +11,7 @@ zuul:
   ignored-services: '*'
   routes:
     user-service:
-      path: /users/**
-      strip-prefix: false
+      path: /user-api/**
     inventory-service:
       path: /inventory-api/**
 
@@ -21,3 +20,4 @@ ribbon:
   connection-timeout: 3000
   eureka:
     enabled: true
+
