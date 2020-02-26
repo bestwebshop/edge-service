@@ -30,10 +30,10 @@ security:
       client-secret: supersecretpassword
       access-token-uri: http://${AUTH_DOMAIN_NAME:authorization-service}:${AUTH_DOMAIN_PORT:8080}/${AUTH_DOMAIN_PATH}token
       grant-type: authorization_code
-      user-authorization-uri: http://authorization-service:8080/authorize
+      user-authorization-uri: http://${AUTH_DOMAIN_NAME:authorization-service}:${AUTH_DOMAIN_PORT:8080}/${AUTH_DOMAIN_PATH}authorize
       scope: all.read all.write
     resource:
       jwk:
-        key-set-uri: http://authorization-service:8080/oauth2/keys
+        key-set-uri: http://${AUTH_DOMAIN_NAME:authorization-service}:${AUTH_DOMAIN_PORT:8080}/${AUTH_DOMAIN_PATH}oauth2/keys
 
 
