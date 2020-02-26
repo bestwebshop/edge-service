@@ -10,6 +10,8 @@ eureka:
 zuul:
   ignored-services: '*'
   routes:
+    authorization-service:
+      path: /auth/**
     user-service:
       path: /user-api/**
     inventory-service:
@@ -20,4 +22,15 @@ ribbon:
   connection-timeout: 3000
   eureka:
     enabled: true
+
+security:
+  oauth2:
+    client:
+      client-id: webshop-webclient
+      client-secret: supersecretpassword
+      access-token-uri: http://bestwebshop.tech/auth/oauth/token
+      grant-type: authorization_code
+      user-authorization-uri: http://bestwebshop.tech/auth/oauth/authorize
+      scope: all.read all.write
+
 
