@@ -8,10 +8,13 @@ eureka:
     health-check-url-path: /health
 
 zuul:
+  sensitiveHeaders:
   ignored-services: '*'
   routes:
     authorization-service:
       path: /auth/**
+      #stripPrefix: false
+      url: http://localhost:9208/
     user-service:
       path: /user-api/**
     inventory-service:
@@ -28,12 +31,13 @@ security:
     client:
       client-id: webshop-webclient
       client-secret: supersecretpassword
-      access-token-uri: http://${AUTH_DOMAIN_NAME:authorization-service}:${AUTH_DOMAIN_PORT:8080}/${AUTH_DOMAIN_PATH}token
+      access-token-uri: http://localhost:9208/oauth/token
       grant-type: authorization_code
-      user-authorization-uri: http://${AUTH_DOMAIN_NAME:authorization-service}:${AUTH_DOMAIN_PORT:8080}/${AUTH_DOMAIN_PATH}authorize
+      user-authorization-uri: http://localhost:9208/oauth/authorize
       scope: all.read all.write
     resource:
       jwk:
-        key-set-uri: http://${AUTH_DOMAIN_NAME:authorization-service}:${AUTH_DOMAIN_PORT:8080}/${AUTH_DOMAIN_PATH}oauth2/keys
+        key-set-uri: http://localhost:9208/oauth2/jwks.json
+
 
 
