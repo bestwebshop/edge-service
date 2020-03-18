@@ -12,10 +12,10 @@ zuul:
   sensitiveHeaders:
   ignored-services: '*'
   routes:
-    authorization-service:
+    oauth-service:
       path: /auth/**
       #stripPrefix: false
-      url: http://localhost:9208/
+      url: http://docker.for.win.localhost:9208/
     user-service:
       path: /user-api/**
     inventory-service:
@@ -40,6 +40,5 @@ security:
       filter-order: 3
       jwk:
         key-set-uri: http://docker.for.win.localhost:9208/oauth2/jwks.json
-
 
 
